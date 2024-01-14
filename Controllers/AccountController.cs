@@ -3,81 +3,71 @@ using CustomIdentity.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomIdentity.Controllers
+namespace CustomIdentity.Controllers;
+
+public class AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager) : Controller
 {
-    public class AccountController : Controller
+    public IActionResult Login()
     {
-        private readonly SignInManager<AppUser> signInManager;
-        private readonly UserManager<AppUser> userManager;
+        return View();
+    }
 
-        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+    [HttpPost]
+    public async Task<IActionResult> Login(LoginVM model)
+    {
+        if (ModelState.IsValid)
         {
-            this.signInManager = signInManager;
-            this.userManager = userManager;
-        }
+            //login
+            var result = await signInManager.PasswordSignInAsync(model.Username!, model.Password!, model.RememberMe, false);
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginVM model)
-        {
-            if (ModelState.IsValid)
+            if (result.Succeeded)
             {
-                //login
-                var result = await signInManager.PasswordSignInAsync(model.Username!, model.Password!, model.RememberMe, false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-
-                ModelState.AddModelError("", "Invalid login attempt");
-                return View(model);
+                return RedirectToAction("Index", "Home");
             }
+
+            ModelState.AddModelError("", "Invalid login attempt");
             return View(model);
         }
+        return View(model);
+    }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
+    public IActionResult Register()
+    {
+        return View();
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterVM model)
+    [HttpPost]
+    public async Task<IActionResult> Register(RegisterVM model)
+    {
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid)
+            AppUser user = new()
             {
-                AppUser user = new()
-                {
-                    Name = model.Name,
-                    UserName = model.Email,
-                    Email = model.Email,
-                    Address = model.Address
-                };
+                Name = model.Name,
+                UserName = model.Email,
+                Email = model.Email,
+                Address = model.Address
+            };
 
-                var result = await userManager.CreateAsync(user, model.Password!);
+            var result = await userManager.CreateAsync(user, model.Password!);
 
-                if (result.Succeeded)
-                {
-                    await signInManager.SignInAsync(user, false);
+            if (result.Succeeded)
+            {
+                await signInManager.SignInAsync(user, false);
 
-                    return RedirectToAction("Index", "Home");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
         }
+        return View(model);
+    }
 
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-            return RedirectToAction("Index","Home");
-        }
+    public async Task<IActionResult> Logout()
+    {
+        await signInManager.SignOutAsync();
+        return RedirectToAction("Index","Home");
     }
 }
