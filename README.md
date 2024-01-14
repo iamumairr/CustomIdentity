@@ -1,10 +1,35 @@
-For running the project in your system, you'll need
+# Project Setup Guide
 
-1. Visual Studio 2022 or Visual Studio Code
-2. .Net 8 SDK
-3. SQL Server (Preferred) - you can you any other DB, but make sure to have correct connection string
+To run this project on your system, ensure that you have the following prerequisites installed:
 
-Make changes to connection string in AppSettings.json file, and run a migration command: 
+1. **Visual Studio 2022 or Visual Studio Code**
+2. **.NET 8 SDK**
+3. **SQL Server (Preferred)** - You can use any other database, but ensure that you have the correct connection string.
 
-1. Visual Studio => Tools => Nuget Package Manager => Package Manager Conslole => update-database OR
-2. Visual Studio Code => terminal => dotnet ef database update
+## Steps to Set Up the Project:
+
+### 1. Install Required Tools
+
+- Install [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/).
+- Install [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/6.0).
+
+### 2. Configure Database Connection
+
+- Make changes to the connection string in the `AppSettings.json` file.
+
+### 3. Run Migration Command
+
+#### Using Visual Studio:
+1. Navigate to **Tools** => **NuGet Package Manager** => **Package Manager Console**.
+2. Run the following command: `update-database`.
+
+#### Using Visual Studio Code:
+1. Open the terminal.
+2. Run the following command: `dotnet ef database update`.
+
+## Additional Notes:
+
+- Ensure that your SQL Server is up and running before executing the migration command.
+- Double-check the connection string in `AppSettings.json` to avoid any connection issues.
+
+With these steps completed, your project should be ready to run. If you encounter any issues during setup, refer to the project contributors.
