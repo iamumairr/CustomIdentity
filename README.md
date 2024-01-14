@@ -10,7 +10,7 @@ To run this project on your system, ensure that you have the following prerequis
 
 ### 1. Install Required Tools
 
-- Install [Visual Studio 2022]([https://visualstudio.microsoft.com/vs/](https://visualstudio.microsoft.com/downloads) or [Visual Studio Code](https://code.visualstudio.com/).
+- Install [Visual Studio 2022](https://visualstudio.microsoft.com/downloads) or [Visual Studio Code](https://code.visualstudio.com/).
 - Install [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 ### 2. Configure Database Connection
