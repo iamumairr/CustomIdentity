@@ -8,7 +8,7 @@
 <div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-3 card p-3">
         <h2 class="text-center text-info">Login</h2>
-        <form asp-action="Login" method="post">
+        <form asp-action="Login" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-1">
                 <label asp-for="Username" class="control-label"></label>
@@ -27,7 +27,7 @@
             </div>
             <div class="row">
                 <div class="col-8">
-                    <a asp-action="Register" class="text-decoration-none float-start mt-2">Don't have account?</a>
+                    <a asp-action="Register" class="text-decoration-none float-start mt-2" asp-route-returnurl="@ViewData["ReturnUrl"]">Don't have account?</a>
                 </div>
                 <div class="col-4">
                     <input type="submit" value="Login" class="btn btn-primary btn-sm float-end" />
