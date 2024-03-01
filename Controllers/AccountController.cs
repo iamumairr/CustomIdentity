@@ -28,7 +28,6 @@ public class AccountController(SignInManager<AppUser> signInManager, UserManager
             }
 
             ModelState.AddModelError("", "Invalid login attempt");
-            return View(model);
         }
         return View(model);
     }
