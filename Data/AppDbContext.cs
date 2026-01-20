@@ -4,10 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomIdentity.Data;
 
-public class AppDbContext : IdentityDbContext<AppUser>
+public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<AppUser>(options)
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
-
-    }
 }

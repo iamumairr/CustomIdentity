@@ -2,16 +2,16 @@
 
 To run this project on your system, ensure that you have the following prerequisites installed:
 
-1. **Visual Studio 2022 or Visual Studio Code**
-2. **.NET 8 SDK**
+1. **Visual Studio 2026 or Visual Studio Code**
+2. **.NET 10 SDK**
 3. **SQL Server (Preferred)** - You can use any other database, but ensure that you have the correct connection string.
 
 ## Steps to Set Up the Project:
 
 ### 1. Install Required Tools
 
-- Install [Visual Studio 2022](https://visualstudio.microsoft.com/downloads) or [Visual Studio Code](https://code.visualstudio.com/).
-- Install [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
+- Install [Visual Studio 2026](https://visualstudio.microsoft.com/downloads) or [Visual Studio Code](https://code.visualstudio.com/).
+- Install [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
 ### 2. Configure Database Connection
 

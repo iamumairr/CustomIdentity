@@ -1,9 +1,4 @@
-﻿using CustomIdentity.Models;
-using CustomIdentity.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-
-namespace CustomIdentity.Controllers;
+﻿namespace CustomIdentity.Controllers;
 
 public class AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager) : Controller
 {

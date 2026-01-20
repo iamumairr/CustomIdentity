@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CustomIdentity.ViewModels;
+﻿namespace CustomIdentity.ViewModels;
 
 public class LoginVM
 {
